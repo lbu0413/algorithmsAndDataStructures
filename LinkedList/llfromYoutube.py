@@ -54,7 +54,7 @@ class LinkedList:
             cur = cur.next
             if i == idx:
                 prev.next = cur.next
-                return
+                return cur.data
             i += 1
 
 
@@ -64,5 +64,5 @@ my_list.append(5)
 my_list.append(28)
 print(my_list.display())
 print(my_list.getIdx(2))
-my_list.erase(1)
+print(my_list.erase(1))
 print(my_list.display())
