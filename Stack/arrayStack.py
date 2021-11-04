@@ -39,22 +39,37 @@
 #         return self.data.getAt(self.size()).data
 
 
-def solution(expr):
-    match = {
-        ')': '(',
-        '}': '{',
-        ']': '['
-    }
-    S = ArrayStack()
-    for c in expr:
-        if c in '({[':
-            S.push(c)
-        elif c in match:
-            if S.size() == 0:
-                return False
-            else:
-                t = match[c]
-                if t != S.pop():
-                    return False
-    return S.isEmpty()
+# def solution(expr):
+#     match = {
+#         ')': '(',
+#         '}': '{',
+#         ']': '['
+#     }
+#     S = ArrayStack()
+#     for c in expr:
+#         if c in '({[':
+#             S.push(c)
+#         elif c in match:
+#             if S.isEmpty():
+#                 return False
+#             else:
+#                 t = match[c]
+#                 if t != S.pop():
+#                     return False
+#     return S.isEmpty()
 #
+
+
+a = '1ab2'
+b = []
+for i in range(len(a)):
+    if a[i].isnumeric():
+        b.append(a[i])
+
+print(b)
+
+# prec = {
+#     '*': 3, '/': 3,
+#     '+': 2, '-': 2,
+#     '(': 1
+# }
