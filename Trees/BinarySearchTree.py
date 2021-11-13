@@ -54,6 +54,14 @@ class Node:
         else:
             raise KeyError('Error')
 
+    def countChildren(self):
+        count = 0
+        if self.left:
+            count += 1
+        if self.right:
+            count += 1
+        return count
+
 
 class BinSearchTree:
     def __init__(self):
@@ -88,3 +96,43 @@ class BinSearchTree:
             self.root.insert(key, data)
         else:
             self.root = Node(key, data)
+
+    def remove(self, key):
+        node, parent = self.lookup(key)
+        if node:
+            nChildren = node.countchildren()
+            if nChildren == 0:
+                if parent:
+                    if node < parent:
+                        parent.left = None
+                    else:
+                        parent.right = None
+                else:
+                    self.root = None
+            elif nChildren == 1:
+                if node.left:
+                    newNode = node.left
+                else:
+                    newNode = node.right
+                if parent:
+                    if node.key < parent.key:
+                        parent.left = newNode
+                    else:
+                        parent.right = newNode
+                else:
+                    self.root = newNode
+            else:
+                parent = node
+                successor = node.right
+                while successor.left:
+                    parent = successor
+                    successor = successor.left
+                node.key = successor.key
+                node.data = successor.data
+                if successor.key < parent.key:
+                    parent.left = successor.right
+                else:
+                    parent.right = successor.right
+            return True
+        else:
+            return False
