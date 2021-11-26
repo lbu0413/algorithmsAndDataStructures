@@ -1,7 +1,7 @@
 board = [list(map(int, input().split())) for i in range(7)]
 
-
 cnt = 0
+
 for i in range(3):
     for j in range(7):
         tmp = board[j][i:i+5]
@@ -12,4 +12,5 @@ for i in range(3):
                 break
         else:
             cnt += 1
+
 print(cnt)
