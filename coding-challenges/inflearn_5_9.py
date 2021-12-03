@@ -1,20 +1,16 @@
-from collections import deque
 
 
 n = int(input())
+hsh = {}
 
-dq = deque([])
 for i in range(n):
     word = input()
-    dq.append(word)
+    hsh[word] = 1
 
-for i in range(n-1):
-    word2 = input()
-    for j in range(len(dq)):
-        if dq[j] == word2:
-            dq.popleft()
-        else:
-            dq.append(dq.popleft())
-        break
+for j in range(n-1):
+    word = input()
+    hsh[word] = 0
 
-print(dq[0])
+for key, value in hsh.items():
+    if value == 1:
+        print(key)
